@@ -1,6 +1,10 @@
 <template>
   <div class="apartments-list">
     <ApartmentsListItem />
+    <ApartmentsListItem />
+    <ApartmentsListItem />
+    <ApartmentsListItem />
+    <ApartmentsListItem />
   </div>
 </template>
 

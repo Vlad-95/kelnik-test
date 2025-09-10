@@ -2,6 +2,7 @@
   <div class="wrapper">
     <slot />
   </div>
+  <ToTop />
 </template>
 
 <script lang="ts" setup></script>
