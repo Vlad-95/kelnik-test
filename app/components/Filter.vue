@@ -1,10 +1,12 @@
 <template>
   <form action="" class="filter">
     <div class="filter__checkboxes">
-      <FilterCheckbox :label="'1к'" />
-      <FilterCheckbox :label="'2к'" />
-      <FilterCheckbox :label="'3к'" />
-      <FilterCheckbox :label="'4к'" />
+      <FilterCheckbox
+        :label="`${item}к`"
+        :value="item"
+        v-for="item in roomsSetArr"
+        :key="item"
+      />
     </div>
 
     <div class="filter__ranges">
@@ -19,13 +21,35 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import type { Apartment } from '~~/types/apartment';
 
-import FilterCheckbox from './FilterCheckbox.vue';
-import FilterRange from './FilterRange.vue';
+const props = defineProps<{ apartments: Apartment[] }>();
 
-const apartmentPrice = ref([0, 100]);
-const apartmentSquare = ref([0, 100]);
+// const apartmentPrice = ref([0, 100]);
+// const apartmentSquare = ref([0, 100]);
+
+const roomsSetArr: ComputedRef<number[]> = computed((): number[] => {
+  const roomsSet = new Set<number>();
+
+  props.apartments.forEach((item) => {
+    roomsSet.add(item.rooms);
+  });
+
+  return Array.from(roomsSet);
+});
+
+const apartmentPrice: ComputedRef<number[]> = computed((): number[] => {
+  const minPrice = Math.min(...props.apartments.map((item) => item.price));
+  const maxPrice = Math.max(...props.apartments.map((item) => item.price));
+  return [minPrice, maxPrice];
+});
+console.log(props.apartments);
+
+const apartmentSquare: ComputedRef<number[]> = computed((): number[] => {
+  const minSquare = Math.min(...props.apartments.map((item) => item.square));
+  const maxSquare = Math.max(...props.apartments.map((item) => item.square));
+  return [minSquare, maxSquare];
+});
 </script>
 
 <style lang="less">

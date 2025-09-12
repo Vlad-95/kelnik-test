@@ -10,26 +10,24 @@
       </div>
     </div>
 
-    <Slider v-model="value" :tooltips="false" />
+    <Slider v-model="value" :tooltips="false" :min="value[0]" :max="value[1]" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { formatPrice } from '~/utils/formatPrice';
 import Slider from '@vueform/slider';
 
-const props = defineProps({
-  values: {
-    type: Array,
-    required: true,
-  },
-  caption: {
-    type: String,
-    required: true,
-  },
-});
+const props = defineProps<{
+  values: number[];
+  caption: string;
+}>();
 
 const value = ref(props.values);
+
+onMounted(() => {
+  console.log(props.values);
+});
 </script>
 
 <style lang="less">

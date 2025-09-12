@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 
 const scrollToTop = () => {
   window.scrollTo({

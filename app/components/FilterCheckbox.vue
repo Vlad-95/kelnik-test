@@ -1,18 +1,17 @@
 <template>
   <label class="filter-checkbox">
-    <input type="checkbox" v-model="value" />
+    <input type="checkbox" :value="value" v-model="isChecked" />
     <p>{{ label }}</p>
   </label>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+const props = defineProps<{
+  label: string;
+  value: number;
+}>();
 
-const value = ref(false);
-
-const props = defineProps({
-  label: String,
-});
+const isChecked: Ref<boolean> = ref(false);
 </script>
 
 <style lang="less">

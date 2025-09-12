@@ -1,0 +1,64 @@
+{
+  "flats": [
+    {
+      "id": 1,
+      "image": "/images/apartment-image1.png",
+      "caption": "1-комнатная квартира № 104",
+      "rooms": 1,
+      "square": 63.1,
+      "flat": 1,
+      "flatTotal": 17,
+      "price": 6630500
+    },
+    {
+      "id": 2,
+      "image": "/images/apartment-image1.png",
+      "caption": "2-комнатная квартира № 105",
+      "rooms": 2,
+      "square": 64.1,
+      "flat": 2,
+      "flatTotal": 17,
+      "price": 6630600
+    },
+    {
+      "id": 3,
+      "image": "/images/apartment-image1.png",
+      "caption": "3-комнатная квартира № 106",
+      "rooms": 3,
+      "square": 65.1,
+      "flat": 3,
+      "flatTotal": 17,
+      "price": 6630700
+    },
+    {
+      "id": 4,
+      "image": "/images/apartment-image1.png",
+      "caption": "4-комнатная квартира № 107",
+      "rooms": 4,
+      "square": 66.1,
+      "flat": 4,
+      "flatTotal": 17,
+      "price": 6630800
+    },
+    {
+      "id": 5,
+      "image": "/images/apartment-image1.png",
+      "caption": "1-комнатная квартира № 108",
+      "rooms": 1,
+      "square": 67.1,
+      "flat": 5,
+      "flatTotal": 17,
+      "price": 6630900
+    },
+    {
+      "id": 6,
+      "image": "/images/apartment-image1.png",
+      "caption": "3-комнатная квартира № 109",
+      "rooms": 3,
+      "square": 68.1,
+      "flat": 6,
+      "flatTotal": 17,
+      "price": 6630950
+    }
+  ]
+}

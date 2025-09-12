@@ -4,18 +4,30 @@
       <h1 class="page-title">Квартиры</h1>
       <div class="apartments__content">
         <Sort />
-        <ApartmentsList />
+        <ApartmentsList
+          v-if="apartments && apartments.length"
+          :apartments="apartments"
+        />
         <Pagination />
       </div>
 
       <aside class="apartments__side">
-        <Filter />
+        <Filter
+          v-if="apartments && apartments.length"
+          :apartments="apartments"
+        />
       </aside>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const { apartments, loading, error, fetchData } = useData();
+
+onMounted(() => {
+  fetchData();
+});
+</script>
 
 <style lang="less">
 .apartments {
@@ -24,8 +36,10 @@
   &__wrap {
     display: grid;
     grid-template-columns: 1fr 399px;
+    grid-template-rows: auto 1fr;
     gap: 0 80px;
     grid-template-areas: 'title side' 'content side';
+    align-items: start;
   }
 
   .page-title {

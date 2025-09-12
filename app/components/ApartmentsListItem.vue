@@ -1,16 +1,25 @@
 <template>
   <div class="item">
     <div class="item__image">
-      <img src="/images/apartment-image1.png" alt="" />
+      <img :src="itemData.image" alt="" />
     </div>
-    <div class="item__caption">3-комнатная №104</div>
-    <div class="item__square">63,1</div>
-    <div class="item__flat"><span>1</span> из 17</div>
-    <div class="item__price">6 630 500</div>
+    <div class="item__caption">{{ itemData.caption }}</div>
+    <div class="item__square">{{ itemData.square }}</div>
+    <div class="item__flat">
+      <span>{{ itemData.flat }}</span> из {{ itemData.flatTotal }}
+    </div>
+    <div class="item__price">{{ formatPrice(itemData.price) }}</div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { formatPrice } from '~/utils/formatPrice';
+import type { Apartment } from '~~/types/apartment';
+
+const props = defineProps<{
+  itemData: Apartment;
+}>();
+</script>
 
 <style lang="less">
 .item {
