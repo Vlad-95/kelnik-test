@@ -6,6 +6,11 @@
         :value="item"
         v-for="item in roomsSetArr"
         :key="item"
+        :handle="
+          () => {
+            filterStore.toggleRoomsFilter(item);
+          }
+        "
       />
     </div>
 

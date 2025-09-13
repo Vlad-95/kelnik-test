@@ -4,7 +4,7 @@
       type="checkbox"
       :value="value"
       v-model="isChecked"
-      @change="filterStore.toggleRoomsFilter(value)"
+      @change="handle"
     />
     <p>{{ label }}</p>
   </label>
@@ -18,6 +18,7 @@ const filterStore = useFilterStore();
 const props = defineProps<{
   label: string;
   value: number;
+  handle: () => void;
 }>();
 
 const isChecked: Ref<boolean> = ref(false);
