@@ -2,10 +2,11 @@
   <form action="" class="filter">
     <div class="filter__checkboxes">
       <FilterCheckbox
-        :label="`${item}к`"
-        :value="item"
         v-for="item in roomsSetArr"
         :key="item"
+        :label="`${item}к`"
+        :value="item"
+        :checked="filterStore.filters.rooms.includes(item)"
         :handle="
           () => {
             filterStore.toggleRoomsFilter(item);
@@ -36,7 +37,9 @@
     </div>
 
     <div class="filter__reset">
-      <button type="button">Сбросить параметры</button>
+      <button type="button" @click="filterStore.resetFilters">
+        Сбросить параметры
+      </button>
     </div>
   </form>
 </template>

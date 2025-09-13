@@ -1,11 +1,6 @@
 <template>
   <label class="filter-checkbox">
-    <input
-      type="checkbox"
-      :value="value"
-      v-model="isChecked"
-      @change="handle"
-    />
+    <input type="checkbox" :value="value" :checked="checked" @change="handle" />
     <p>{{ label }}</p>
   </label>
 </template>
@@ -18,10 +13,9 @@ const filterStore = useFilterStore();
 const props = defineProps<{
   label: string;
   value: number;
+  checked: boolean;
   handle: () => void;
 }>();
-
-const isChecked: Ref<boolean> = ref(false);
 </script>
 
 <style lang="less">
