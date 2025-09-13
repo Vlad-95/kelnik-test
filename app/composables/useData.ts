@@ -10,9 +10,8 @@ export const useData = () => {
       loading.value = true;
       error.value = null;
 
-      const response = await $fetch<any>('/json/data.json');
-
-      apartments.value = response.flats || [];
+      const { data } = await useFetch<any>('/json/data.json');
+      apartments.value = data.value.apartments || [];
     } catch (err) {
       error.value = 'Ошибка при загрузке данных';
       console.error('Error fetching data:', err);
