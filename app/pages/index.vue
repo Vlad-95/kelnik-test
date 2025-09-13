@@ -1,28 +1,27 @@
 <template>
-  <div class="apartments">
+  <div class="apartments" v-if="apartments && apartments.length">
     <div class="apartments__wrap">
       <h1 class="page-title">Квартиры</h1>
       <div class="apartments__content">
         <Sort />
-        <ApartmentsList
-          v-if="apartments && apartments.length"
-          :apartments="apartments"
-        />
+        <ApartmentsList :apartments="sortApartments" />
         <Pagination />
       </div>
 
       <aside class="apartments__side">
-        <Filter
-          v-if="apartments && apartments.length"
-          :apartments="apartments"
-        />
+        <Filter :apartments="apartments" />
       </aside>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useSortStore } from '~~/stores/useSortStore';
 const { apartments, loading, error, fetchData } = useData();
+const { sortApartments } = useApartmentsSort(apartments);
+
+// Store
+const sortStore = useSortStore();
 
 onMounted(() => {
   fetchData();

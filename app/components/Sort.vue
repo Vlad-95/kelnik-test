@@ -2,21 +2,25 @@
   <div class="sort">
     <div class="sort__image">Планировка</div>
     <div class="sort__caption">Квартира</div>
-    <div class="sort__square" :class="squareSort" @click="toggleSquareSort">
+    <div
+      class="sort__square"
+      :class="sort.square"
+      @click="sortStore.toggleSquare"
+    >
       S, м<sup>2</sup>
       <div class="sort__toggle">
         <span class="sort__toggle-up"></span>
         <span class="sort__toggle-down"></span>
       </div>
     </div>
-    <div class="sort__flat" :class="flatSort" @click="toggleFlatSort">
+    <div class="sort__flat" :class="sort.flat" @click="sortStore.toggleFlat">
       Этаж
       <div class="sort__toggle">
         <span class="sort__toggle-up"></span>
         <span class="sort__toggle-down"></span>
       </div>
     </div>
-    <div class="sort__price" :class="priceSort" @click="togglePriceSort">
+    <div class="sort__price" :class="sort.price" @click="sortStore.togglePrice">
       Цена, ₽
       <div class="sort__toggle">
         <span class="sort__toggle-up"></span>
@@ -27,43 +31,10 @@
 </template>
 
 <script lang="ts" setup>
-// Refs
-type SortDirection = 'asc' | 'desc' | null;
+import { useSortStore } from '~~/stores/useSortStore';
 
-const squareSort: Ref<SortDirection> = ref(null);
-const flatSort: Ref<SortDirection> = ref(null);
-const priceSort: Ref<SortDirection> = ref(null);
-
-// Methods
-const toggleSquareSort = (): void => {
-  if (squareSort.value == null) {
-    squareSort.value = 'asc';
-  } else if (squareSort.value == 'asc') {
-    squareSort.value = 'desc';
-  } else {
-    squareSort.value = null;
-  }
-};
-
-const toggleFlatSort = (): void => {
-  if (flatSort.value == null) {
-    flatSort.value = 'asc';
-  } else if (flatSort.value == 'asc') {
-    flatSort.value = 'desc';
-  } else {
-    flatSort.value = null;
-  }
-};
-
-const togglePriceSort = (): void => {
-  if (priceSort.value == null) {
-    priceSort.value = 'asc';
-  } else if (priceSort.value == 'asc') {
-    priceSort.value = 'desc';
-  } else {
-    priceSort.value = null;
-  }
-};
+const sortStore = useSortStore();
+const { sort } = storeToRefs(sortStore);
 </script>
 
 <style lang="less">

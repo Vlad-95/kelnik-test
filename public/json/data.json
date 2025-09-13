@@ -5,30 +5,30 @@
       "image": "/images/apartment-image1.png",
       "caption": "1-комнатная квартира № 104",
       "rooms": 1,
-      "square": 63.1,
-      "flat": 1,
+      "square": 65.1,
+      "flat": 2,
       "flatTotal": 17,
-      "price": 6630500
+      "price": 6630700
     },
     {
       "id": 2,
       "image": "/images/apartment-image1.png",
       "caption": "2-комнатная квартира № 105",
       "rooms": 2,
-      "square": 64.1,
-      "flat": 2,
+      "square": 63.1,
+      "flat": 3,
       "flatTotal": 17,
-      "price": 6630600
+      "price": 6630500
     },
     {
       "id": 3,
       "image": "/images/apartment-image1.png",
       "caption": "3-комнатная квартира № 106",
       "rooms": 3,
-      "square": 65.1,
-      "flat": 3,
+      "square": 64.1,
+      "flat": 1,
       "flatTotal": 17,
-      "price": 6630700
+      "price": 6630600
     },
     {
       "id": 4,

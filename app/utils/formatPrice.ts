@@ -1,4 +1,6 @@
-export const formatPrice = (price: number): string => {
+export const formatPrice = (price: number | undefined): string => {
+  if (!price) return '0';
+
   const numStr: string = price.toString();
 
   const parts: string[] = numStr.split('.');

@@ -11,7 +11,11 @@
 
     <div class="filter__ranges">
       <FilterRange :values="apartmentPrice" caption="Стоимость квартиры, ₽" />
-      <FilterRange :values="apartmentSquare" caption="Площадь квартиры, м2" />
+      <FilterRange
+        :values="apartmentSquare"
+        caption="Площадь квартиры, м2"
+        :step="0.1"
+      />
     </div>
 
     <div class="filter__reset">
@@ -24,9 +28,6 @@
 import type { Apartment } from '~~/types/apartment';
 
 const props = defineProps<{ apartments: Apartment[] }>();
-
-// const apartmentPrice = ref([0, 100]);
-// const apartmentSquare = ref([0, 100]);
 
 const roomsSetArr: ComputedRef<number[]> = computed((): number[] => {
   const roomsSet = new Set<number>();
@@ -43,7 +44,6 @@ const apartmentPrice: ComputedRef<number[]> = computed((): number[] => {
   const maxPrice = Math.max(...props.apartments.map((item) => item.price));
   return [minPrice, maxPrice];
 });
-console.log(props.apartments);
 
 const apartmentSquare: ComputedRef<number[]> = computed((): number[] => {
   const minSquare = Math.min(...props.apartments.map((item) => item.square));

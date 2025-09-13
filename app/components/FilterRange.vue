@@ -3,14 +3,22 @@
     <div class="filter-range__caption">{{ caption }}</div>
     <div class="filter-range__values">
       <div>
-        от <span>{{ value[0] }}</span>
+        от <span>{{ formatPrice(value[0]) }}</span>
       </div>
       <div>
-        до <span>{{ value[1] }}</span>
+        до <span>{{ formatPrice(value[1]) }}</span>
       </div>
     </div>
 
-    <Slider v-model="value" :tooltips="false" :min="value[0]" :max="value[1]" />
+    <Slider
+      v-model="value"
+      :tooltips="false"
+      :step="step"
+      :min="minValue"
+      :max="maxValue"
+      :lazy="false"
+      @change="changeValues"
+    />
   </div>
 </template>
 
@@ -18,16 +26,19 @@
 import { formatPrice } from '~/utils/formatPrice';
 import Slider from '@vueform/slider';
 
-const props = defineProps<{
+interface FilterRangeProps {
   values: number[];
   caption: string;
-}>();
+  step?: number;
+}
+
+const props = withDefaults(defineProps<FilterRangeProps>(), { step: 1 });
 
 const value = ref(props.values);
+const minValue = ref(props.values[0]);
+const maxValue = ref(props.values[1]);
 
-onMounted(() => {
-  console.log(props.values);
-});
+const changeValues = () => {};
 </script>
 
 <style lang="less">
