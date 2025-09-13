@@ -1,11 +1,20 @@
 <template>
   <label class="filter-checkbox">
-    <input type="checkbox" :value="value" v-model="isChecked" />
+    <input
+      type="checkbox"
+      :value="value"
+      v-model="isChecked"
+      @change="filterStore.toggleRoomsFilter(value)"
+    />
     <p>{{ label }}</p>
   </label>
 </template>
 
 <script lang="ts" setup>
+import { useFilterStore } from '~~/stores/useFilterStore';
+
+const filterStore = useFilterStore();
+
 const props = defineProps<{
   label: string;
   value: number;

@@ -17,19 +17,21 @@
       :min="minValue"
       :max="maxValue"
       :lazy="false"
-      @change="changeValues"
+      @change="handle"
     />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { formatPrice } from '~/utils/formatPrice';
+
 import Slider from '@vueform/slider';
 
 interface FilterRangeProps {
   values: number[];
   caption: string;
   step?: number;
+  handle: Function;
 }
 
 const props = withDefaults(defineProps<FilterRangeProps>(), { step: 1 });
@@ -37,8 +39,6 @@ const props = withDefaults(defineProps<FilterRangeProps>(), { step: 1 });
 const value = ref(props.values);
 const minValue = ref(props.values[0]);
 const maxValue = ref(props.values[1]);
-
-const changeValues = () => {};
 </script>
 
 <style lang="less">

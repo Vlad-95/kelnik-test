@@ -10,11 +10,23 @@
     </div>
 
     <div class="filter__ranges">
-      <FilterRange :values="apartmentPrice" caption="Стоимость квартиры, ₽" />
+      <FilterRange
+        :values="apartmentPrice"
+        caption="Стоимость квартиры, ₽"
+        :handle="
+          (event: [number, number]) => {
+            filterStore.togglePriceFilter(event);
+          }
+        "
+      />
       <FilterRange
         :values="apartmentSquare"
         caption="Площадь квартиры, м2"
         :step="0.1"
+        :handle="
+          (event: [number, number]) => {
+          filterStore.toggleSquareFilter(event);
+        }"
       />
     </div>
 
@@ -25,7 +37,10 @@
 </template>
 
 <script lang="ts" setup>
+import { useFilterStore } from '~~/stores/useFilterStore';
 import type { Apartment } from '~~/types/apartment';
+
+const filterStore = useFilterStore();
 
 const props = defineProps<{ apartments: Apartment[] }>();
 

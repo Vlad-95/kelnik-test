@@ -4,7 +4,7 @@
       <h1 class="page-title">Квартиры</h1>
       <div class="apartments__content">
         <Sort />
-        <ApartmentsList :apartments="sortApartments" />
+        <ApartmentsList :apartments="filteredAndSortedApartments" />
         <Pagination />
       </div>
 
@@ -16,12 +16,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useSortStore } from '~~/stores/useSortStore';
 const { apartments, loading, error, fetchData } = useData();
-const { sortApartments } = useApartmentsSort(apartments);
-
-// Store
-const sortStore = useSortStore();
+const { filteredAndSortedApartments } = useApartmentsFilter(apartments);
 
 onMounted(() => {
   fetchData();

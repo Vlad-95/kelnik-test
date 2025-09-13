@@ -5,7 +5,7 @@
     <div
       class="sort__square"
       :class="sort.square"
-      @click="sortStore.toggleSquare"
+      @click="filterStore.toggleSquareSort"
     >
       S, м<sup>2</sup>
       <div class="sort__toggle">
@@ -13,14 +13,22 @@
         <span class="sort__toggle-down"></span>
       </div>
     </div>
-    <div class="sort__flat" :class="sort.flat" @click="sortStore.toggleFlat">
+    <div
+      class="sort__flat"
+      :class="sort.flat"
+      @click="filterStore.toggleFlatSort"
+    >
       Этаж
       <div class="sort__toggle">
         <span class="sort__toggle-up"></span>
         <span class="sort__toggle-down"></span>
       </div>
     </div>
-    <div class="sort__price" :class="sort.price" @click="sortStore.togglePrice">
+    <div
+      class="sort__price"
+      :class="sort.price"
+      @click="filterStore.togglePriceSort"
+    >
       Цена, ₽
       <div class="sort__toggle">
         <span class="sort__toggle-up"></span>
@@ -31,10 +39,10 @@
 </template>
 
 <script lang="ts" setup>
-import { useSortStore } from '~~/stores/useSortStore';
+import { useFilterStore } from '~~/stores/useFilterStore';
 
-const sortStore = useSortStore();
-const { sort } = storeToRefs(sortStore);
+const filterStore = useFilterStore();
+const { sort } = storeToRefs(filterStore);
 </script>
 
 <style lang="less">
