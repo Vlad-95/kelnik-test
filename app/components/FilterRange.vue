@@ -23,12 +23,16 @@
 </template>
 
 <script lang="ts" setup>
+import { useFilterStore } from '~~/stores/useFilterStore';
 import { formatPrice } from '~/utils/formatPrice';
-
 import Slider from '@vueform/slider';
+
+const filterStore = useFilterStore();
+const { filters } = storeToRefs(filterStore);
 
 interface FilterRangeProps {
   values: number[];
+  currentValues: number[];
   caption: string;
   step?: number;
   handle: Function;
@@ -39,6 +43,16 @@ const props = withDefaults(defineProps<FilterRangeProps>(), { step: 1 });
 const value = ref(props.values);
 const minValue = ref(props.values[0]);
 const maxValue = ref(props.values[1]);
+
+watch(
+  () => props.currentValues,
+  (newValue) => {
+    if (newValue.length == 0) {
+      value.value = props.values;
+    }
+  },
+  { deep: true }
+);
 </script>
 
 <style lang="less">

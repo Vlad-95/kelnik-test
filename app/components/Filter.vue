@@ -18,6 +18,7 @@
     <div class="filter__ranges">
       <FilterRange
         :values="apartmentPrice"
+        :currentValues="filters.price"
         caption="Стоимость квартиры, ₽"
         :handle="
           (event: [number, number]) => {
@@ -27,6 +28,7 @@
       />
       <FilterRange
         :values="apartmentSquare"
+        :currentValues="filters.square"
         caption="Площадь квартиры, м2"
         :step="0.1"
         :handle="
@@ -49,6 +51,7 @@ import { useFilterStore } from '~~/stores/useFilterStore';
 import type { Apartment } from '~~/types/apartment';
 
 const filterStore = useFilterStore();
+const { filters } = storeToRefs(filterStore);
 
 const props = defineProps<{ apartments: Apartment[] }>();
 
