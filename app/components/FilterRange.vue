@@ -23,12 +23,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useFilterStore } from '~~/stores/useFilterStore';
 import { formatPrice } from '~/utils/formatPrice';
 import Slider from '@vueform/slider';
-
-const filterStore = useFilterStore();
-const { filters } = storeToRefs(filterStore);
 
 interface FilterRangeProps {
   values: number[];
