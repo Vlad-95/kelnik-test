@@ -1,5 +1,7 @@
 <template>
-  <button type="button" class="load-more">Загрузить еще</button>
+  <button type="button" class="load-more" @click="$emit('loadMore')">
+    Загрузить еще
+  </button>
 </template>
 
 <script lang="ts" setup></script>

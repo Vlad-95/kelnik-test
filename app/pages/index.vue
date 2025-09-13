@@ -4,8 +4,8 @@
       <h1 class="page-title">Квартиры</h1>
       <div class="apartments__content">
         <Sort />
-        <ApartmentsList :apartments="filteredAndSortedApartments" />
-        <Pagination />
+        <ApartmentsList :apartments="displayItems" />
+        <Pagination v-if="hasMoreItems" @loadMore="loadMore" />
       </div>
 
       <aside class="apartments__side">
@@ -18,6 +18,11 @@
 <script lang="ts" setup>
 const { apartments, loading, error, fetchData } = useData();
 const { filteredAndSortedApartments } = useApartmentsFilter(apartments);
+
+const { displayItems, hasMoreItems, loadMore, resetPagination } = usePagination(
+  filteredAndSortedApartments,
+  5
+);
 
 onMounted(() => {
   fetchData();
