@@ -17,10 +17,12 @@ const scrollToTop = () => {
   });
 };
 
-const toTop = ref(null);
+const toTop = ref<HTMLElement | null>(null);
 
 onMounted(() => {
   window.addEventListener('scroll', () => {
+    if (!toTop.value) return;
+
     if (window.scrollY > 100) {
       toTop.value.classList.add('active');
     } else {

@@ -6,10 +6,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useFilterStore } from '~~/stores/useFilterStore';
-
-const filterStore = useFilterStore();
-
 const props = defineProps<{
   label: string;
   value: number;
